@@ -10,7 +10,7 @@ namespace _30DaysOfCode
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Enter the number of the day of the program you want to run (1-30, strictly!)!");
+            Console.WriteLine("Enter the number of the day of the program you want to run (0-29, strictly!)!");
             int day = int.Parse(Console.ReadLine() ?? "1"); 
 
             DayProgram program;
@@ -30,6 +30,10 @@ namespace _30DaysOfCode
         {
             return day switch
             {
+                0 => new Day0(),
+                1 => new Day1(),
+                2 => new Day2(),
+                3 => new Day3(),
                 10 => new Day10(),
                 _ => throw new InvalidDataException("This day doesn't exist in this contest")
             };
