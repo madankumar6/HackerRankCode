@@ -5,6 +5,7 @@ namespace _30DaysOfCode
     {
         public abstract void RunProgram();
     }
+
     internal class Program
     {
         static void Main(string[] args)
@@ -51,6 +52,7 @@ namespace _30DaysOfCode
                 19 => new Day19(),
                 20 => new Day20(),
                 21 => new Day21(),
+                22 => new Day22(),
                 _ => throw new InvalidDataException("This day doesn't exist in this contest")
             };
         }
