@@ -75,6 +75,44 @@ namespace LinkedList
             }
         }
 
+        internal SinglyLinkedListNode DeleteANodeAtPosition(SinglyLinkedListNode head, int position)
+        {
+            if (head == null)
+            {
+                return null;
+            }
+
+            var node = head;
+            SinglyLinkedListNode prev = null;
+            int currentPosition = 0;
+
+            while (node != null)
+            {
+                if (currentPosition == position)
+                {
+                    break;
+                }
+                prev = node;
+                node = node.Next;
+                currentPosition++;
+            }
+
+            if (node == null)
+            {
+                Console.Write($"Node at position {position} not found");
+            }
+            else if (prev == null)
+            {
+                head = node.Next;
+            }
+            else
+            {
+                prev.Next = node.Next;
+            }
+
+            return head;
+        }
+
         internal SinglyLinkedListNode InsertInBeginning(SinglyLinkedListNode head, int data)
         {
             SinglyLinkedListNode node = new SinglyLinkedListNode(data);
@@ -82,7 +120,6 @@ namespace LinkedList
             if (head == null)
             {
                 head = node;
-                Tail = node;
             }
             else
             {
@@ -116,6 +153,18 @@ namespace LinkedList
             }
 
             return head;
+        }
+
+        internal void ReverseList(SinglyLinkedListNode head)
+        {
+            if (head == null)
+            {
+                return;
+            }
+
+            ReverseList(head.Next);
+
+            Console.WriteLine(head.Data);
         }
     }
 }

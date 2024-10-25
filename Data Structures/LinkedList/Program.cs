@@ -23,6 +23,10 @@ namespace LinkedList
                 Console.WriteLine("2.Print the Elements of a Linked List");
                 Console.WriteLine("3.Insert a node at the head of a linked list");
                 Console.WriteLine("4.Insert a node at the end of the list");
+                Console.WriteLine("5.Delete the node");
+                Console.WriteLine("6.Print in reverse");
+                Console.WriteLine("7.Reverse a list");
+
 
                 Console.WriteLine("19.Quit");
 
@@ -53,11 +57,22 @@ namespace LinkedList
                         data = Convert.ToInt32(Console.ReadLine());
                         list.Head = list.InsertNodeAtTail(list.Head, data);
                         break;
-                    //case 5:
-                    //    Console.Write("Enter the element to be inserted at the end: ");
-                    //    data = Convert.ToInt32(Console.ReadLine());
-                    //    list.InsertAtEnd(data);
-                    //    break;
+                    case 5:
+                        //https://www.hackerrank.com/challenges/delete-a-node-from-a-linked-list/problem?isFullScreen=true
+                        Console.Write("Enter the position of the node to be deleted: ");
+                        position = Convert.ToInt32(Console.ReadLine());
+                        list.Head = list.DeleteANodeAtPosition(list.Head, position);
+                        break;
+                    case 6:
+                        //https://www.hackerrank.com/challenges/print-the-elements-of-a-linked-list-in-reverse/problem?isFullScreen=true
+                        Console.Write("Reversal of the list: ");
+                        list.ReverseList(list.Head);
+                        break;
+                    case 7  :
+                        //https://www.hackerrank.com/challenges/reverse-a-linked-list/problem?isFullScreen=true
+                        Console.Write("Reversal of the list: ");
+                        list.ReverseList(list.Head);
+                        break;
                     //case 6:
                     //    Console.Write("Enter the element to be inserted : ");
                     //    data = Convert.ToInt32(Console.ReadLine());
