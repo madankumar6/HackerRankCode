@@ -166,5 +166,17 @@ namespace LinkedList
 
             Console.WriteLine(head.Data);
         }
+
+        internal void DiplayListInReverse(SinglyLinkedListNode head)
+        {
+            if (head == null)
+            {
+                return;
+            }
+
+            ReverseList(head.Next);
+
+            Console.WriteLine(head.Data);
+        }
     }
 }
