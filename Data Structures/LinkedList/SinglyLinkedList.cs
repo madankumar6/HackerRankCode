@@ -174,7 +174,7 @@ namespace LinkedList
                 return;
             }
 
-            ReverseList(head.Next);
+            DiplayListInReverse(head.Next);
 
             Console.WriteLine(head.Data);
         }

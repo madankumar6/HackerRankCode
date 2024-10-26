@@ -66,7 +66,7 @@ namespace LinkedList
                     case 6:
                         //https://www.hackerrank.com/challenges/print-the-elements-of-a-linked-list-in-reverse/problem?isFullScreen=true
                         Console.Write("Reversal of the list: ");
-                        list.ReverseList(list.Head);
+                        list.DiplayListInReverse(list.Head);
                         break;
                     case 7  :
                         //https://www.hackerrank.com/challenges/reverse-a-linked-list/problem?isFullScreen=true
