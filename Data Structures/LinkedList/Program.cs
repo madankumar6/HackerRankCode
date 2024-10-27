@@ -27,7 +27,6 @@ namespace LinkedList
                 Console.WriteLine("6.Print in reverse");
                 Console.WriteLine("7.Reverse a list");
 
-
                 Console.WriteLine("19.Quit");
 
                 Console.Write("Enter your choice : ");

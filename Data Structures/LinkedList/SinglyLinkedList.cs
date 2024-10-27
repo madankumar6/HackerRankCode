@@ -155,16 +155,24 @@ namespace LinkedList
             return head;
         }
 
-        internal void ReverseList(SinglyLinkedListNode head)
+        internal SinglyLinkedListNode ReverseList(SinglyLinkedListNode head)
         {
-            if (head == null)
-            {
-                return;
+            Stack<int> listData = new Stack<int>();
+
+            var node = head;
+
+            while(node != null) {
+                listData.Push(node.Data);
+                node = node.Next;
             }
 
-            ReverseList(head.Next);
+            node = head;
+            while(node != null) {
+                node.Data =  listData.Pop();
+                node = node.Next;
+            }
 
-            Console.WriteLine(head.Data);
+            return head;
         }
 
         internal void DiplayListInReverse(SinglyLinkedListNode head)
