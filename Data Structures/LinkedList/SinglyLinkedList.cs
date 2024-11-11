@@ -157,21 +157,37 @@ namespace LinkedList
 
         internal SinglyLinkedListNode ReverseList(SinglyLinkedListNode head)
         {
-            Stack<int> listData = new Stack<int>();
+            // The following takes O(n) Time and O(n) Space using the stack approach
+            //Stack<int> listData = new Stack<int>();
 
+            //var node = head;
+
+            //while(node != null) {
+            //    listData.Push(node.Data);
+            //    node = node.Next;
+            //}
+
+            //node = head;
+            //while(node != null) {
+            //    node.Data =  listData.Pop();
+            //    node = node.Next;
+            //}
+
+            //return head;
+
+            SinglyLinkedListNode start = head;
+            SinglyLinkedListNode prev = null, next = null;
             var node = head;
 
-            while(node != null) {
-                listData.Push(node.Data);
-                node = node.Next;
+            while (node != null)
+            {
+                next = node.Next;
+                node.Next = prev;
+                prev = node;
+                node = next;
             }
 
-            node = head;
-            while(node != null) {
-                node.Data =  listData.Pop();
-                node = node.Next;
-            }
-
+            head = prev;
             return head;
         }
 
@@ -185,6 +201,87 @@ namespace LinkedList
             DiplayListInReverse(head.Next);
 
             Console.WriteLine(head.Data);
+        }
+
+        internal SinglyLinkedListNode InsertANodeAtPosition(SinglyLinkedListNode head, int data, int position)
+        {
+            if (head == null)
+            {
+                return null;
+            }
+
+            var node = head;
+            SinglyLinkedListNode prev = null;
+            int currentPosition = 0;
+
+            while (node != null)
+            {
+                if (currentPosition == position)
+                {
+                    break;
+                }
+                prev = node;
+                node = node.Next;
+                currentPosition++;
+            }
+
+            var newNode = new SinglyLinkedListNode(data);
+
+            if (node == null)
+            {
+                Console.Write($"Node at position {position} not found");
+            }
+            else if (prev == null)
+            {
+                newNode.Next = node;
+                head = newNode;
+            }
+            else
+            {
+                newNode.Next = node;
+                prev.Next = newNode;
+            }
+
+            return head;
+        }
+
+        internal void CompareLists()
+        {
+            SinglyLinkedList list1 = new SinglyLinkedList();
+            SinglyLinkedList list2 = new SinglyLinkedList();
+
+            list1.CreateList();
+            list2.CreateList();
+
+            bool areListsSame = CompareLists(list1.Head, list2.Head);
+            Console.WriteLine("Are the lists same : " + areListsSame);
+        }
+
+        private bool CompareLists(SinglyLinkedListNode head1, SinglyLinkedListNode head2)
+        {
+            var areListsSame = true;
+
+            SinglyLinkedListNode node1 = head1;
+            SinglyLinkedListNode node2 = head2;
+
+            while (node1 != null && node2 != null)
+            {
+                if (node1.Data != node2.Data)
+                {
+                    areListsSame = false;
+                    break;
+                }
+
+                node1 = node1.Next;
+                node2 = node2.Next;
+            }
+
+            if (areListsSame && (node1 != null || node2 != null))
+            {
+                areListsSame = false;
+            }
+
+            return areListsSame;
         }
     }
 }

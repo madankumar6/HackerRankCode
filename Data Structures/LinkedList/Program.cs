@@ -26,6 +26,8 @@ namespace LinkedList
                 Console.WriteLine("5.Delete the node");
                 Console.WriteLine("6.Print in reverse");
                 Console.WriteLine("7.Reverse a list");
+                Console.WriteLine("8.Insert a Node at specific position in a list");
+                Console.WriteLine("9.Compare two lists");
 
                 Console.WriteLine("19.Quit");
 
@@ -70,7 +72,19 @@ namespace LinkedList
                     case 7  :
                         //https://www.hackerrank.com/challenges/reverse-a-linked-list/problem?isFullScreen=true
                         Console.Write("Reversal of the list: ");
-                        list.ReverseList(list.Head);
+                        list.Head = list.ReverseList(list.Head);
+                        break;
+                    case 8:
+                        //https://www.hackerrank.com/challenges/insert-a-node-at-a-specific-position-in-a-linked-list/problem?isFullScreen=true
+                        Console.Write("Enter the position of the node: ");
+                        position = Convert.ToInt32(Console.ReadLine());
+                        Console.Write($"Enter the element to be inserted : ");
+                        data = Convert.ToInt32(Console.ReadLine());
+                        list.Head = list.InsertANodeAtPosition(list.Head, data, position);
+                        break;
+                    case 9:
+                        //https://www.hackerrank.com/challenges/compare-two-linked-lists/problem?isFullScreen=true
+                        list.CompareLists();
                         break;
                     //case 6:
                     //    Console.Write("Enter the element to be inserted : ");
