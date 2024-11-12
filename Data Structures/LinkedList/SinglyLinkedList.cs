@@ -40,7 +40,7 @@ namespace LinkedList
             this.Tail = node;
         }
 
-        public void PrintLinkedList()
+        internal void PrintLinkedList()
         {
             if (this.Head == null)
             {
@@ -282,6 +282,66 @@ namespace LinkedList
             }
 
             return areListsSame;
+        }
+
+        internal SinglyLinkedListNode GetNodeValueFromTail(SinglyLinkedListNode head, int position)
+        {
+            SinglyLinkedListNode node = head, prev = null, next = null;
+
+            while (node != null)
+            {
+                next = node.Next;
+                node.Next = prev;
+                prev = node;
+                node = next;
+            }
+
+            head = prev;
+            SinglyLinkedListNode revNode = prev;
+            int counter = 0; 
+
+            while(revNode != null)
+            {
+                if (counter == position)
+                {
+                    break;
+                }
+
+                revNode = revNode.Next;
+                counter++;
+            }
+
+            if (revNode != null)
+            {
+                Console.WriteLine("The value at node from the tail position is: " + revNode.Data);
+                //return revNode.Data;
+            }
+
+            return head;
+        }
+
+        internal SinglyLinkedListNode DeleteDuplicateNodes(SinglyLinkedListNode head)
+        {
+            if (head == null || head.Next == null)
+            {
+                return head;
+            }
+
+            SinglyLinkedListNode node = head;
+
+            while (node.Next != null)
+            {
+                if (node.Data == node.Next.Data)
+                {
+                    node.Next = node.Next.Next;
+                }
+                else
+                {
+                    node = node.Next;
+                }
+            }
+
+            return head;
         }
     }
 }

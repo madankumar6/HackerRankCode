@@ -28,13 +28,15 @@ namespace LinkedList
                 Console.WriteLine("7.Reverse a list");
                 Console.WriteLine("8.Insert a Node at specific position in a list");
                 Console.WriteLine("9.Compare two lists");
+                Console.WriteLine("10.Get node value");
+                Console.WriteLine("11.Delete duplicate node from the list");
 
-                Console.WriteLine("19.Quit");
+                Console.WriteLine("99.Quit");
 
                 Console.Write("Enter your choice : ");
                 choice = Convert.ToInt32(Console.ReadLine());
 
-                if (choice == 19)
+                if (choice == 99)
                     break;
 
                 switch (choice)
@@ -86,45 +88,16 @@ namespace LinkedList
                         //https://www.hackerrank.com/challenges/compare-two-linked-lists/problem?isFullScreen=true
                         list.CompareLists();
                         break;
-                    //case 6:
-                    //    Console.Write("Enter the element to be inserted : ");
-                    //    data = Convert.ToInt32(Console.ReadLine());
-                    //    Console.Write("Enter the element after which to insert : ");
-                    //    x = Convert.ToInt32(Console.ReadLine());
-                    //    list.InsertAfter(x, data);
-                    //    break;
-                    //case 7:
-                    //    Console.Write("Enter the element to be inserted : ");
-                    //    data = Convert.ToInt32(Console.ReadLine());
-                    //    Console.Write("Enter the element before which to insert : ");
-                    //    x = Convert.ToInt32(Console.ReadLine());
-                    //    list.InsertBefore(x, data);
-                    //    break;
-                    //case 8:
-                    //    Console.Write("Enter the element to be inserted : ");
-                    //    data = Convert.ToInt32(Console.ReadLine());
-                    //    Console.Write("Enter the position at which to insert : ");
-                    //    position = Convert.ToInt32(Console.ReadLine());
-                    //    list.InsertAtPosition(data, position);
-                    //    break;
-                    //case 9:
-                    //    list.DeleteFirstNode();
-                    //    break;
-                    //case 10:
-                    //    list.DeleteLastNode();
-                    //    break;
-                    //case 11:
-                    //    Console.Write("Enter the element to be deleted : ");
-                    //    data = Convert.ToInt32(Console.ReadLine());
-                    //    list.DeleteNode(data);
-                    //    break;
-                    //case 12:
-                    //    list.ReverseList();
-                    //    break;
-                    //case 13:
-                    //    list.BubbleSortExData();
-                    //    break;
-
+                    case 10:
+                        //https://www.hackerrank.com/challenges/get-the-value-of-the-node-at-a-specific-position-from-the-tail/problem?isFullScreen=true
+                        Console.Write("Enter the position of the node from tail: ");
+                        position = Convert.ToInt32(Console.ReadLine());
+                        list.Head = list.GetNodeValueFromTail(list.Head, position);
+                        break;
+                    case 11:
+                        //https://www.hackerrank.com/challenges/get-the-value-of-the-node-at-a-specific-position-from-the-tail/problem?isFullScreen=true
+                        list.Head = list.DeleteDuplicateNodes(list.Head);
+                        break;
                     default:
                         Console.WriteLine("Wrong choice");
                         break;
