@@ -30,6 +30,8 @@ namespace LinkedList
                 Console.WriteLine("9.Compare two lists");
                 Console.WriteLine("10.Get node value");
                 Console.WriteLine("11.Delete duplicate node from the list");
+                Console.WriteLine("12.Cycle detection");
+                Console.WriteLine("13.Find Merge Point of Two Lists");
 
                 Console.WriteLine("99.Quit");
 
@@ -97,6 +99,15 @@ namespace LinkedList
                     case 11:
                         //https://www.hackerrank.com/challenges/get-the-value-of-the-node-at-a-specific-position-from-the-tail/problem?isFullScreen=true
                         list.Head = list.DeleteDuplicateNodes(list.Head);
+                        break;
+                    case 12:
+                        //https://www.hackerrank.com/challenges/detect-whether-a-linked-list-contains-a-cycle/problem?isFullScreen=true
+                        var hasCycle = list.HasCycle(list.Head);
+                        Console.WriteLine("This list has a cycle : " + hasCycle);
+                        break;
+                    case 13:
+                        //https://www.hackerrank.com/challenges/find-the-merge-point-of-two-joined-linked-lists/problem?isFullScreen=true
+                        var mergePointValue = list.FindMergePoint();
                         break;
                     default:
                         Console.WriteLine("Wrong choice");

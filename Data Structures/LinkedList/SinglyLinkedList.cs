@@ -1,4 +1,6 @@
 ﻿
+using System;
+
 namespace LinkedList
 {
     public class SinglyLinkedListNode
@@ -57,14 +59,14 @@ namespace LinkedList
 
         }
 
-        internal void CreateList()
+        internal int CreateList()
         {
             Console.Write("Enter the number of nodes : ");
             int nodesCount = Convert.ToInt32(Console.ReadLine());
 
             if (nodesCount == 0)
             {
-                return;
+                return 0;
             }
 
             for (int i = 1; i <= nodesCount; i++)
@@ -73,6 +75,8 @@ namespace LinkedList
                 int data = Convert.ToInt32(Console.ReadLine());
                 InsertNode(data);
             }
+
+            return nodesCount;
         }
 
         internal SinglyLinkedListNode DeleteANodeAtPosition(SinglyLinkedListNode head, int position)
@@ -342,6 +346,101 @@ namespace LinkedList
             }
 
             return head;
+        }
+
+        internal bool HasCycle(SinglyLinkedListNode head)
+        {
+            if (head == null || head.Next == null)
+            {
+                return false;
+            }
+
+            SinglyLinkedListNode slowRef = head, fastRef = head;
+
+            while (fastRef != null && fastRef.Next != null)
+            {
+                slowRef = slowRef.Next;
+                fastRef = fastRef.Next.Next;
+
+                if (slowRef == fastRef)
+                {
+                    Console.WriteLine("This list does have a cycle");
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        internal int FindMergePoint()
+        {
+            SinglyLinkedList list1 = new SinglyLinkedList();
+            SinglyLinkedList list2 = new SinglyLinkedList();
+
+            var list1Count = list1.CreateList();
+            var list2Count = list2.CreateList();
+
+            SinglyLinkedListNode ptr1 = list1.Head;
+            SinglyLinkedListNode ptr2 = list2.Head;
+
+            Console.Write("Enter the index of the merge point at : ");
+            int index = Convert.ToInt32(Console.ReadLine());
+
+            for (int i = 0; i < list1Count; i++)
+            {
+                if (i < index)
+                {
+                    ptr1 = ptr1.Next;
+                }
+            }
+
+            for (int i = 0; i < list2Count; i++)
+            {
+                if (i != list2Count - 1)
+                {
+                    ptr2 = ptr2.Next;
+                }
+            }
+
+            ptr2.Next = ptr1;
+
+            return FindMergePoint(list1.Head, list2.Head);
+        }
+
+        internal int FindMergePoint(SinglyLinkedListNode head1, SinglyLinkedListNode head2)
+        {
+            SinglyLinkedListNode node1 = head1, node2 = head2, mergePoint = null;
+
+            while (node1 != null && node2 != null)
+            {
+                if (node1 == node2)
+                {
+                    mergePoint = node1;
+                    break;
+                }
+
+                if (node1.Next == null && node2.Next == null)
+                {
+                    break;
+                }
+
+                 if (node1.Next != null)
+                {
+                    node1 = node1.Next;
+                }
+
+                if (node2.Next != null)
+                {
+                    node2 = node2.Next;
+                }
+            }
+
+            if (mergePoint != null)
+            {
+                return mergePoint.Data;
+            }
+
+            return 0;
         }
     }
 }
